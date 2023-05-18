@@ -1,7 +1,6 @@
 import 'package:authentication_app/login_page.dart';
-import 'package:authentication_app/signup_page.dart';
-import 'package:authentication_app/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: const Welcome(),
+      home: const LoginPage(),
     );
   }
 }

@@ -1,4 +1,7 @@
+import 'package:authentication_app/signup_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               child: const Center(
-                child: Text("Sign in",
+                child: Text("Sign In",
                     style: TextStyle(
                       fontSize: 36,
                       color: Colors.white,
@@ -148,10 +151,12 @@ class _LoginPageState extends State<LoginPage> {
               text: TextSpan(
                   text: "Don't have an account?",
                   style: TextStyle(color: Colors.grey.shade500, fontSize: 20),
-                  children: const [
+                  children: [
                     TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => Get.to(() => const SignUpPage()),
                       text: " Create",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                       ),
