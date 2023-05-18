@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    List images = ["google_logo.png", "facebook_logo.png", "twitter_logo.jpg"];
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -17,16 +13,24 @@ class _LoginPageState extends State<LoginPage> {
         body: Column(
           children: [
             Container(
-                width: w,
-                height: 0.3 * h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/img/loginimg.jpg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                  ),
-                  borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(80)),
+              width: w,
+              height: 0.3 * h,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/img/signup.png"),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
+                borderRadius:
+                    BorderRadius.only(bottomRight: Radius.circular(80)),
+              ),
+            ),
+            Container(
+                margin: const EdgeInsets.only(top: 40),
+                child: CircleAvatar(
+                  backgroundColor: Colors.purple.shade400,
+                  radius: 70,
+                  backgroundImage: const AssetImage("assets/img/profile.png"),
                 )),
             Container(
                 margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -34,20 +38,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Hello",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 70,
-                            fontFamily: "Arial",
-                          )),
-                      Text("Sign in your account",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.grey.shade500,
-                          )),
-                      const SizedBox(
-                        height: 40,
-                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -62,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "Username",
-                              prefixIcon: Icon(Icons.person,
+                              hintText: "Email",
+                              prefixIcon: Icon(Icons.email_rounded,
                                   color: Colors.purple.shade400),
                               focusedBorder: OutlineInputBorder(
                                 borderSide:
@@ -112,18 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(child: Container()),
-                          Text("Forgot your password?",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey.shade500,
-                              )),
-                        ],
-                      ),
                     ])),
-            const SizedBox(height: 70),
+            const SizedBox(height: 20),
             Container(
               width: w * 0.5,
               height: h * 0.08,
@@ -136,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               child: const Center(
-                child: Text("Sign in",
+                child: Text("Sign Up",
                     style: TextStyle(
                       fontSize: 36,
                       color: Colors.white,
@@ -146,17 +126,25 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: h * 0.08),
             RichText(
               text: TextSpan(
-                  text: "Don't have an account?",
-                  style: TextStyle(color: Colors.grey.shade500, fontSize: 20),
-                  children: const [
-                    TextSpan(
-                      text: " Create",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
+                text: "Sign up using one of the following methods",
+                style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
+              ),
+            ),
+            Wrap(
+              children: List<Widget>.generate(3, (index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.purple.shade100,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundImage:
+                          AssetImage("assets/img/${images[index]}"),
                     ),
-                  ]),
+                  ),
+                );
+              }),
             ),
           ],
         ));
